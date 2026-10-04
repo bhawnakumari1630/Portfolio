@@ -10,7 +10,7 @@ import NotFoundPage from './pages/NotFoundPage'
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
