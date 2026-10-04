@@ -1,16 +1,18 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { ThemeProvider } from './context/ThemeContext'
-import MainLayout from './layouts/MainLayout'
-import HomePage from './pages/HomePage'
-import WorkPage from './pages/WorkPage'
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import NotFoundPage from './pages/NotFoundPage'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import WorkPage from "./pages/WorkPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
+  const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+
   return (
     <ThemeProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
@@ -23,7 +25,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;
