@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+@keyframes marquee-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marquee-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.marquee-up,
+.marquee-down {
+  will-change: transform;
+}
+
+.marquee-up {
+  animation: marquee-up 32s linear infinite;
+}
+
+.marquee-down {
+  animation: marquee-down 32s linear infinite;
+}
+
+.marquee-paused:hover .marquee-up,
+.marquee-paused:hover .marquee-down {
+  animation-play-state: paused;
+}
